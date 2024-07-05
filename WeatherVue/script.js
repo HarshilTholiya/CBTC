@@ -1,6 +1,7 @@
 const inputValue = document.querySelector('.input-val');
 const searchBtn = document.getElementById('searchButton');
 const weather_status = document.querySelector('.weather-status');
+var element = document.getElementById('backgroundContainer');
 const not_found = document.querySelector('.not-found');
 const display = document.querySelector('.display');
 const temperature = document.querySelector('.weather-data');
@@ -38,43 +39,56 @@ async function weatherCheck(city){
 
     switch(weather_data.weather[0].main){
 
+        
         case 'Rain':
-            weather_status.src = "rain.gif";
+            weather_status.src = "rain.png";
+            element.style.backgroundImage = "url('Rain.jpeg')";
             break;
 
         case 'Clouds':
-            weather_status.src = "cloudy.gif";
+            weather_status.src = "cloudy.png";
+            element.style.backgroundImage = "url('Clouds.jpeg')";
             break;
 
         case 'Mist':
-            weather_status.src = "mist.gif";
+            weather_status.src = "mist.png";
+            element.style.backgroundImage = "url('Mist.jpeg')";
             break;
 
         case 'Snow':
-            weather_status.src = "snow.gif";
+            weather_status.src = "snow.png";
+            element.style.backgroundImage = "url('Snow.jpeg')";
             break;
 
         case 'Clear':
-            weather_status.src = "clear.gif";
+            weather_status.src = "clear.png";
+            element.style.backgroundImage = "url('Clear.jpeg')";
             break; 
 
         case 'Smoke':
-            weather_status.src = "mist.gif";
+            weather_status.src = "smoke.png";
+            element.style.backgroundImage = "url('Smoke.jpeg')";
             break;
 
         case 'Haze':
-            weather_status.src = "mist.gif";
+            weather_status.src = "mist.png";
+            element.style.backgroundImage = "url('Haze.jpeg')";
             break; 
         
         case 'Fog':
-            weather_status.src = "mist.gif";
+            weather_status.src = "smoke.png";
+            element.style.backgroundImage = "url('Fog.jpeg')";
             break;
 
     }
 }
 
 searchBtn.addEventListener('click', ()=>{
-
-    weatherCheck(inputValue.value)
-
+    document.body.classList.add('blur-background');
+    setTimeout(() => {
+        weatherCheck(inputValue.value);
+    }, 500);
+    setTimeout(() => {
+        document.body.classList.remove('blur-background');
+    }, 1000); 
 });
